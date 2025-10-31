@@ -10,10 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.isEmptyOrNullString;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.anyOf;
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -72,7 +69,7 @@ public class PersonIntegrationTest {
                 .andExpect(jsonPath("$.color", anyOf(isEmptyOrNullString(), equalTo("unbekannt"))));
     }
 
-    // ✅ Zeile 9: Kein Name, aber PLZ und Ort vorhanden
+    // Kein Name, aber PLZ und Ort vorhanden
     @Test
     public void testPersonOhneName() throws Exception {
         mockMvc.perform(get("/persons/9"))
@@ -81,11 +78,4 @@ public class PersonIntegrationTest {
                 .andExpect(jsonPath("$.city").value("Wasweißich"))
                 .andExpect(jsonPath("$.color").value("blau"));
     }
-
-
-
-
-
-
-
 }

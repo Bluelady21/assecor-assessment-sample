@@ -64,7 +64,6 @@ public class CsvPersonRepository implements PersonRepository {
         return person;
     }
 
-
     @PostConstruct
     public void loadData() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(

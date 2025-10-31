@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
 
 public class PersonControllerTest {
 
@@ -122,6 +123,4 @@ public class PersonControllerTest {
         assertEquals(400, response.getStatusCodeValue());
         assertNull(response.getBody());
     }
-
-
 }
